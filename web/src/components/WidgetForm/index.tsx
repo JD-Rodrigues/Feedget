@@ -44,7 +44,7 @@ export function WidgetForm() {
     }
 
     return (
-        <div className=" text-darkTextPrimary-500 flex flex-col bg-darkSurfacePrimary-500 mb-4 items-center w-[calc(100vw-2rem)] md:w-auto p-4 gap-4 rounded-2xl relative">
+        <div className=" text-darkTextPrimary-500 flex flex-col bg-darkSurfacePrimary-500 mb-4 items-center w-[calc(100vw-2rem)] md:w-auto p-4 gap-4 rounded-2xl relative box-border">
             {!selectedType?(
                 <SelectFeedbackType changeFeedbackType={setSelectedType}/>
             ):(

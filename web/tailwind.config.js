@@ -20,6 +20,9 @@ module.exports = {
         },
         darkTextSecondary: {
           500: '#A1A1AA'
+        },
+        darkStroke: {
+          500: '#52525B'
         }
       }
     },

@@ -1,4 +1,4 @@
-import { ArrowLeft } from "phosphor-react"
+import { ArrowLeft, Camera } from "phosphor-react"
 import { feedbackTypeItems, objectTypes } from ".."
 import { CloseButton } from "../../CloseButton"
 
@@ -20,8 +20,22 @@ export function SendFeedback({typeSelected,resetFeedbackType}:SendFeedbackProps)
                 </div>
                 <CloseButton />
             </header>
-            <form className="w-full" action="">
-                <textarea className="w-full min-w-[384px] min-h-[112px]" placeholder="Conte-nos detalhes sobre o que está acontecendo."/>
+            <form className="flex flex-col gap-2 w-full box-border" action="">
+                <textarea 
+                className="w-full min-w-[304px] min-h-[112px] text-sm placeholder-darkTextSecondary-500 border-1 border-darkStroke-500 focus:border-brand-500 text-darkTextPrimary-500  bg-transparent outline-none scrollbar-thin scrollbar-thumb-darkStroke-500 resize-none rounded-md" 
+                placeholder="Conte-nos detalhes sobre o que está acontecendo."
+                />
+                <footer className="flex justify-center gap-2">
+                    <button className="w-10 h-10 flex justify-center items-center bg-darkSurfaceSecondary-500 rounded">
+                        <Camera className="w-6 h-6 text-darkTextPrimary-500" />
+                    </button>
+                    <button 
+                    className=" flex flex-1 justify-center items-center py-2 bg-brand-500 h-10  rounded"
+                    type="submit">
+                
+                        <div className="text-base text-lightText-500">Enviar feedback</div> 
+                    </button>
+                </footer>
             </form>
         </>
     )
