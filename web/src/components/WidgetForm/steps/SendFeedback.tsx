@@ -1,6 +1,8 @@
 import { ArrowLeft, Camera } from "phosphor-react"
+import { useState } from "react"
 import { feedbackTypeItems, objectTypes } from ".."
 import { CloseButton } from "../../CloseButton"
+import { TakeScreenshotButton } from "./TakeScreenshotButton"
 
 
 interface SendFeedbackProps {
@@ -9,6 +11,7 @@ interface SendFeedbackProps {
 }
 
 export function SendFeedback({typeSelected,resetFeedbackType}:SendFeedbackProps){
+    const [screenshot,setScreenshot] = useState<string | null>(null)
     const selectedTypeInfo = feedbackTypeItems[typeSelected]
     return (
         <>
@@ -27,7 +30,7 @@ export function SendFeedback({typeSelected,resetFeedbackType}:SendFeedbackProps)
                 />
                 <footer className="flex justify-center gap-2">
                     <button className="w-10 h-10 flex justify-center items-center bg-darkSurfaceSecondary-500 rounded">
-                        <Camera className="w-6 h-6 text-darkTextPrimary-500" />
+                        <TakeScreenshotButton screenshot={screenshot} setScreenshot={setScreenshot} />
                     </button>
                     <button 
                     className=" flex flex-1 justify-center items-center py-2 bg-brand-500 h-10  rounded"
