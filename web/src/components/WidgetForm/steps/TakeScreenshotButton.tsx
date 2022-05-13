@@ -1,6 +1,6 @@
 import { Camera, Trash, TrashSimple } from "phosphor-react";
 import html2canvas from "html2canvas";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { Loading } from "../Loading";
 
 interface TakeScreenshotButtonProps {
@@ -10,17 +10,16 @@ interface TakeScreenshotButtonProps {
 }
 
 export function TakeScreenshotButton({setScreenshot,screenshot}:TakeScreenshotButtonProps) {
-    function removeThumb(e){
+    function removeThumb(e:FormEvent){
         e.preventDefault()
         setScreenshot(null)
     }
     const [takingAshot, setTakingAshot] = useState(false)
-    async function takeScreenshot(e) {
+    async function takeScreenshot(e:FormEvent) {
         e.preventDefault()
         setTakingAshot(true)
         const canvas = await html2canvas(document.querySelector('html')!)
         const base64Image = canvas.toDataURL('img/png')
-        
         setTakingAshot(false)
         setScreenshot(base64Image)
     }
