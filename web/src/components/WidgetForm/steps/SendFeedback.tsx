@@ -9,9 +9,10 @@ import { TakeScreenshotButton } from "./TakeScreenshotButton"
 interface SendFeedbackProps {
     typeSelected: objectTypes
     resetFeedbackType: ()=>void
+    setSentState: (arg:boolean)=> void 
 }
 
-export function SendFeedback({typeSelected,resetFeedbackType}:SendFeedbackProps){
+export function SendFeedback({typeSelected,resetFeedbackType, setSentState}:SendFeedbackProps){
     const [screenshot,setScreenshot] = useState<string | null>(null)
     const selectedTypeInfo = feedbackTypeItems[typeSelected]
     const [comment, setComment] = useState(String)
@@ -22,6 +23,7 @@ export function SendFeedback({typeSelected,resetFeedbackType}:SendFeedbackProps)
             comment,
             screenshot
         })
+        setSentState(true)
     }
     return (
         <>
@@ -45,16 +47,17 @@ export function SendFeedback({typeSelected,resetFeedbackType}:SendFeedbackProps)
                 onChange={(event)=>setComment(event.target.value)}
                 />
                 <footer className="flex justify-center gap-2">
-                    <button className="w-10 h-10 flex justify-center items-center bg-darkSurfaceSecondary-500 rounded"
-                    >
-                        <TakeScreenshotButton screenshot={screenshot} setScreenshot={setScreenshot} />
-                    </button>
+
+                    <TakeScreenshotButton screenshot={screenshot} setScreenshot={setScreenshot} />
+
                     <button 
                     className=" flex flex-1 justify-center items-center py-2 bg-brand-500 h-10 disabled:bg-[#635996] disabled:hover:bg-brand-500 rounded"
                     type="submit"
-                    disabled={comment.length===0}>
+                    disabled={comment.length===0}
+                    >
                 
                         <div className="text-base text-lightText-500">Enviar feedback</div> 
+                        
                     </button>
                 </footer>
             </form>
